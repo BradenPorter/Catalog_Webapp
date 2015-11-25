@@ -1,0 +1,35 @@
+
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<div class="whole">
+		<div class="container">
+     	    <div class="navbar-header">
+    			<a class="navbar navbar-fixed-top" role="navigation" href='{{url_for('catalog')}}'>Home</a>
+    			<a class="right" href='{{url_for('disconnect')}}'>Logout</a>
+    		</div>
+    	</div>	
+		<div class="item">
+			<h1> New Item </h1>
+			<form action='{{url_for('newItem')}}' method = 'POST'>
+				Name:</br>
+				<input type='text' size='30' name='name'></br></br>
+				Description:</br>
+				<input type='text' size='30' name='description'></br></br>
+				Price:</br>
+				<input type='text' size='30' name='price'></br></br>
+				Category:</br>
+				<select name="category">
+					{%for category in categories%}
+						<option value="{{category.name}}">{{category.name}}</option>
+					{%endfor%}
+				</select>
+				<input type='submit' value='Create'>
+			</form>
+			<a href='{{url_for('catalog')}}'>Cancel</a>
+		</div>
+	</div>
+</body>
+</html>

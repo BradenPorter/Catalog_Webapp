@@ -1,0 +1,43 @@
+
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<div class="whole">
+		<div class="container">
+     	    <div class="navbar-header">
+    			<a class="navbar navbar-fixed-top" role="navigation" href='{{url_for('catalog')}}'>Home</a>
+    			<a class="right" href='{{url_for('disconnect')}}'>Logout</a>
+    		</div>
+    	</div>	
+		<div class="item">
+			<h1> Edit Item </h1>
+			<form action='{{url_for('editItem',category=category,item=item )}}' method = 'POST'>
+				Name:</br>
+				<input type='text' size='30' name='name' placeholder='{{item}}'></br></br>
+				Description:</br>
+				{%for i in items%}
+					{%if i.name==item%}
+					<input type='text' size='30' name='description' placeholder='{{i.description}}'></br></br>
+					Price:</br>
+					<input type='text' size='30' name='price' placeholder='{{i.price}}'></br></br>
+					{%endif%}
+				{%endfor%}
+				Category:</br>
+<!--Below we make a drop down menu that has the item's category already selected without creating duplicate options -->
+				<select name="category">
+					<option value="{{category}}" default selected>{{category}}</option>
+					{%for cat in categories%}
+						{%if cat.name!=category%}
+							<option value="{{cat.name}}">{{cat.name}}</option>
+						{%endif%}
+					{%endfor%}
+				</select>
+				<input type='submit' value='Edit'>
+			</form>
+			<a href='{{url_for('catalog')}}'>Cancel</a>
+		</div>
+	</div>
+</body>
+</html>

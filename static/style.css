@@ -1,0 +1,21 @@
+body{ font-family: sans-serif; background-color: #ff9933; }
+
+a {
+    float: left;
+    width: 8em;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-left: 1px solid white; 
+    border-right: 1px solid white;
+}
+
+a:hover {
+    background-color: orange;
+}
+
+.whole{width:100%; padding-left:15%; padding-right:15%;}
+.left{float:left; width:20%;}
+.right{float:right; width:80%;}
+.item{float:left; width:70%;height:75%;}
+

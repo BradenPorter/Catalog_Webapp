@@ -1,0 +1,43 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<div class="whole">
+    <div class="container">
+        <div class="navbar-header">
+    		<a class="navbar navbar-fixed-top" role="navigation" href='{{url_for('catalog')}}'>Home</a>
+    		{%if 'username' not in session%}
+    			<a class="right" href='{{url_for('showLogin')}}'>Login</a>
+    		{%else%}
+    			<a class="right" href='{{url_for('disconnect')}}'>Logout</a>
+    		{%endif%}
+    	</div>
+    </div>
+		<div class="left">
+			<h1>Categories</h1>
+			{% for category in categories %}
+				<a href='{{url_for('catalogCategory',category=category.name)}}'>{{category.name}}</a></br>
+			{% endfor %}
+			</br></br>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+					{% for message in messages %}
+		  				<li><strong>{{message}}</strong></li>
+		  			{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		
+		</div>
+		<div class="right">
+			<h1>Latest Items</h1>
+			{% for item in items %}
+				<a href='{{url_for('categoryItem',category=item.category, item=item.name)}}'>{{item.name}}</a></br>	
+			{% endfor %}
+			</br><a href='{{url_for('newItem')}}'>Add new item</a>
+		</div>
+	</div>
+</body>
+</html>

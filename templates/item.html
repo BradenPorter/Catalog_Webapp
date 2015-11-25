@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<div class="whole">
+		<div class="container">
+     	    <div class="navbar-header">
+    			<a class="navbar navbar-fixed-top" role="navigation" href='{{url_for('catalog')}}'>Home</a>
+    		{%if 'username' not in session%}
+    			<a class="right" href='{{url_for('showLogin')}}'>Login</a>
+    		{%else%}
+    			<a class="right" href='{{url_for('disconnect')}}'>Logout</a>
+    		{%endif%}
+    		</div>
+    	</div>	
+		<div class="item">
+			<h1>{{item}}</h1>
+			{%for i in items%}
+				{%if i.name==item%}
+					Description: {{i.description}}</br>
+					Price: {{i.price}}</br>
+					<a href='{{url_for('editItem',category=i.category,item=item )}}'>Edit</a> | <a href='{{url_for('deleteItem',category=i.category,item=item )}}'>Delete</a>
+				{%endif%}
+			{%endfor%}
+		</div>
+	</div>
+</body>
+</html>

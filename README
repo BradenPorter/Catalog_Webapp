@@ -1,0 +1,24 @@
+Requirments to run my program:
+-You will need to have python 2, vagrant, and psql or sqlite installed on any linux OS or linux VM
+https://www.python.org/downloads/
+https://www.vagrantup.com/
+http://www.postgresql.org/download/
+https://www.sqlite.org/download.html
+https://my.vmware.com/web/vmware/downloads
+http://www.ubuntu.com/download
+
+Steps to run my program:
+-install what necessary programs are mentioned above
+-boot linux
+-start vagrant: vagrant up
+-after downloading the zip, unzip catalog.zip
+-navigate to the newly created catalog directory in terminal: cd catalog
+
+Setup the database
+-in terminal type: python db_setup.py
+-this will create a database file called categorymenu.db 
+
+Run the webapp:
+-in terminal type: python catalog.py
+-this will create a webpage
+-view it by typing: http://localhost:5000/catalog into your browser
